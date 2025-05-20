@@ -1,7 +1,7 @@
 WITH base AS (
   SELECT
     si.station_id AS station_id,
-    si.name AS station_name,
+    si.name AS name,
     si.address,
     si.lat,
     si.lon,
@@ -19,7 +19,7 @@ WITH base AS (
 distances AS (
   SELECT
     a.station_id AS station_id,
-    a.name AS station_name,
+    a.name AS name,
     a.lat AS lat_a,
     a.lon AS lon_a,
     b.station_id AS closest_station_id,
@@ -39,11 +39,11 @@ distances AS (
 min_distances AS (
   SELECT
     station_id,
-    station_name,
+    name,
     ARRAY_AGG(STRUCT(closest_station_id, closest_station_name, distance_km)
               ORDER BY distance_km ASC)[OFFSET(0)] AS nearest
   FROM distances
-  GROUP BY station_id, station_name
+  GROUP BY ALL
 )
 
 SELECT DISTINCT
