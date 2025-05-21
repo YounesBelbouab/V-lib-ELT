@@ -37,3 +37,5 @@ Ce projet a pour but de récupérer les données des stations Vélib’ via l’
 1. **Installer les dépendances Python**  
    ```bash
    pip install -r requirements.txt
+
+![alt text](images\relationel bdd.png)
