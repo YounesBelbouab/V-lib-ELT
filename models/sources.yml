@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: velib_dataset
+    database: velib-460309
+    schema: velib_dataset
+    tables:
+      - name: station_information
+      - name: station_status
