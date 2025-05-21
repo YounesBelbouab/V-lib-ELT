@@ -1,0 +1,11 @@
+name: velib_project
+version: '1.0'
+config-version: 2
+
+profile: velib
+
+model-paths: ["models"]
+
+models:
+  velib_project:
+    +materialized: view
