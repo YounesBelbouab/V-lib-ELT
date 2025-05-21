@@ -38,5 +38,9 @@ Ce projet a pour but de récupérer les données des stations Vélib’ via l’
    ```bash
    pip install -r requirements.txt
 
+## 🔄 Pistes d'améliorations
+1. **Mise en place de l'incrémental**
+2. **Développement d'enrichissement plus poussé dans la pipeline**
+
 ## 🔑 Schéma relationnel
 ![alt text](https://github.com/YounesBelbouab/V-lib-ELT/blob/main/images/relationel%20bdd.png)
