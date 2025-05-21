@@ -2,46 +2,27 @@
 
   create or replace view `velib-460309`.`velib_dataset`.`dbt_station_global`
   OPTIONS()
-  as WITH station_information_cte AS (
-    SELECT
-        station_id,
-        name,
-        lat,
-        lon,
-        capacity
-    FROM `velib-460309`.`velib_dataset`.`dbt_station_information`
-),
-
-station_status_cte AS (
-    SELECT
-        station_id,
-        is_installed,
-        is_renting,
-        is_returning,
-        num_bikes_available,
-        num_docks_available,
-        last_reported,
+  as WITH dbt_station_status_cte AS (
+    SELECT *
     FROM `velib-460309`.`velib_dataset`.`dbt_station_status`
 ),
 
-station_global AS (
-    SELECT DISTINCT
-        s.station_id,
-        s.name,
-        s.lat,
-        s.lon,
-        s.capacity,
-        st.is_installed,
-        st.is_renting,
-        st.is_returning,
-        st.num_bikes_available,
-        st.num_docks_available,
-        st.last_reported,
-    FROM station_information_cte s
-    JOIN station_status_cte st
-        ON s.station_id = st.station_id
+dbt_station_info_cte AS (
+    SELECT *
+    FROM `velib-460309`.`velib_dataset`.`dbt_station_information`
 )
 
-SELECT DISTINCT *
-FROM station_global;
+SELECT
+    status.station_id,
+    status.num_bikes_available,
+    status.num_docks_available,
+    status.is_renting,
+    status.is_returning,
+    info.name,
+    info.capacity,
+    info.lat,
+    info.lon
+FROM dbt_station_status_cte AS status
+JOIN dbt_station_info_cte AS info
+ON status.station_id = info.station_id;
 
