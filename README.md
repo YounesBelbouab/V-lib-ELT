@@ -44,3 +44,6 @@ Ce projet a pour but de récupérer les données des stations Vélib’ via l’
 
 ## 🔑 Schéma relationnel
 ![alt text](https://github.com/YounesBelbouab/V-lib-ELT/blob/main/images/relationel%20bdd.png)
+
+**<u>Lien vers le Looker:</u>**
+https://lookerstudio.google.com/reporting/9cd30529-1977-4ddd-8b14-7025acf47a55/page/0KCLF/edit
